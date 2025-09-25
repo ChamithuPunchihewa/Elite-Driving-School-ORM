@@ -1,8 +1,8 @@
-// LessonDTO.java
 package lk.ijse.elite_driving_school_orm.dto;
 
 import lombok.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -10,12 +10,10 @@ import java.time.LocalDateTime;
 @Builder
 public class LessonDTO {
     private String lessonId;
-    private String courseId;
+    private LocalDate date;
+    private LocalTime time;
+    private String status;
     private String studentId;
+    private String courseId;
     private String instructorId;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private String location;
-    private String notes;
-    private boolean cancelled;
 }
