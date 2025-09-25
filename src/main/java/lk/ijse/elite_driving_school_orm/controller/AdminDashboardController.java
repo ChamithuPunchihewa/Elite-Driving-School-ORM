@@ -143,4 +143,16 @@ public class AdminDashboardController {
 
     }
 
+//    private void navigateTo(String path) {
+//        try {
+//            ancChild.getChildren().clear();
+//            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/" + path));
+//            anchorPane.prefWidthProperty().bind(ancChild.widthProperty());
+//            anchorPane.prefHeightProperty().bind(ancChild.heightProperty());
+//            ancChild.getChildren().add(anchorPane);
+//        } catch (IOException e) {
+//            new Alert(Alert.AlertType.ERROR, "Page not found").show();
+//            e.printStackTrace();
+//        }
+//    }
 }

@@ -7,6 +7,7 @@ import lk.ijse.elite_driving_school_orm.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +60,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getALL() {
-        return List.of();
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            return session.createQuery("from User", User.class).list();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
     }
 
     @Override
@@ -71,5 +79,10 @@ public class UserDAOImpl implements UserDAO {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String getLastId() throws SQLException {
+        return "";
     }
 }

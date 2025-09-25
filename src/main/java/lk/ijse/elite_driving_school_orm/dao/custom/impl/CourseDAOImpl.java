@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,5 +86,10 @@ public class CourseDAOImpl implements CourseDAO {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String getLastId() throws SQLException {
+        return "";
     }
 }

@@ -6,11 +6,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.elite_driving_school_orm.dto.tm.UserTM;
 
 public class CoursePageController {
 
     @FXML
-    private TableColumn<?, ?> colCourseId;
+    private TableColumn<UserTM, String> colCourseId;
 
     @FXML
     private TableColumn<?, ?> colDuration;

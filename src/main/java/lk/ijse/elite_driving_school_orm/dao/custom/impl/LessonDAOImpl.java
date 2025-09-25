@@ -8,6 +8,7 @@ import lk.ijse.elite_driving_school_orm.entity.Lesson;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,5 +84,10 @@ public class LessonDAOImpl implements LessonDAO {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String getLastId() throws SQLException {
+        return "";
     }
 }

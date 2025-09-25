@@ -8,9 +8,11 @@ import org.hibernate.cfg.Configuration;
 public class FactoryConfiguration {
     private static FactoryConfiguration factoryConfiguration;
     private SessionFactory sessionFactory;
+
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration();
-        configuration.configure(); // 1 (xml) load configuration
+        Configuration configuration = new Configuration(); // Will auto-load hibernate.properties
+
+        // Add annotated entity classes
         configuration.addAnnotatedClass(Course.class);
         configuration.addAnnotatedClass(Student.class);
         configuration.addAnnotatedClass(Instructor.class);
@@ -19,15 +21,16 @@ public class FactoryConfiguration {
         configuration.addAnnotatedClass(User.class);
 
         sessionFactory = configuration.buildSessionFactory();
-
     }
+
     public static FactoryConfiguration getInstance() {
-        return factoryConfiguration == null ? factoryConfiguration = new FactoryConfiguration() : factoryConfiguration;
+        return factoryConfiguration == null
+                ? factoryConfiguration = new FactoryConfiguration()
+                : factoryConfiguration;
     }
 
     public Session getSession() {
-        Session session = sessionFactory.openSession();
-        return session;
+        return sessionFactory.openSession();
     }
 
     public Session getCurrentSession() {
