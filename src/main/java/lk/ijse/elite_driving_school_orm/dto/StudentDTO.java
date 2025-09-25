@@ -1,9 +1,7 @@
-// StudentDTO.java
 package lk.ijse.elite_driving_school_orm.dto;
 
 import lombok.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -11,12 +9,10 @@ import java.util.List;
 @Builder
 public class StudentDTO {
     private String studentId;
-    private String firstName;
-    private String lastName;
-    private String nic;
+    private String name;
     private String email;
     private String phone;
-    private LocalDate dateOfBirth;
+    private String address;
+    private double registerFee;
     private LocalDate registrationDate;
-    private List<String> enrolledCourseIds;
 }
