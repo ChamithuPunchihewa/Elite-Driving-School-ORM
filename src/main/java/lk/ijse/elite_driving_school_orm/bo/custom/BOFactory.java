@@ -1,7 +1,7 @@
 package lk.ijse.elite_driving_school_orm.bo.custom;
 
 
-import lk.ijse.elite_driving_school_orm.bo.custom.impl.StudentBOImpl;
+import lk.ijse.elite_driving_school_orm.bo.custom.impl.*;
 
 public class BOFactory {
 
@@ -14,16 +14,26 @@ public class BOFactory {
     }
     public enum BOTypes{
         STUDENT,
-//        COURSE,
-//        INSTRUCTOR,
-//        LESSON,
-//        PAYMENT,
-//        USER
+        COURSE,
+        INSTRUCTOR,
+        LESSON,
+        PAYMENT,
+        USER
     }
     public StudentBOImpl getBO(BOTypes boType) {
         switch(boType){
             case STUDENT:
                 return new StudentBOImpl();
+                case COURSE:
+                    return new CourseBOImpl();
+                case INSTRUCTOR:
+                    return new InstructorBOImpl();
+                case LESSON:
+                    return new LessonBOImpl();
+                case PAYMENT:
+                    return new PaymentBOImpl();
+                case USER:
+                    return new UserBOImpl();
             default:
                 return null;
         }
