@@ -4,6 +4,7 @@ import lk.ijse.elite_driving_school_orm.config.FactoryConfiguration;
 import lk.ijse.elite_driving_school_orm.dao.custom.CourseDAO;
 import lk.ijse.elite_driving_school_orm .entity.Course;
 import lk.ijse.elite_driving_school_orm.entity.Instructor;
+import lk.ijse.elite_driving_school_orm.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -72,6 +73,17 @@ public class CourseDAOImpl implements CourseDAO {
             throw e;
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Optional<Course> getOne(int id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try{
+            Course course = session.get(Course.class, id);
+            return Optional.of(course);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

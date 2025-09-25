@@ -2,12 +2,14 @@ package lk.ijse.elite_driving_school_orm.dao.custom.impl;
 
 import lk.ijse.elite_driving_school_orm.config.FactoryConfiguration;
 import lk.ijse.elite_driving_school_orm.dao.custom.PaymentDAO;
+import lk.ijse.elite_driving_school_orm.entity.Course;
 import lk.ijse.elite_driving_school_orm.entity.Lesson;
 import lk.ijse.elite_driving_school_orm.entity.Payment;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PaymentDAOImpl implements PaymentDAO {
     @Override
@@ -71,5 +73,16 @@ public class PaymentDAOImpl implements PaymentDAO {
         }
 
 
+    }
+
+    @Override
+    public Optional<Payment> getOne(int id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try{
+            Payment payment = session.get(Payment.class, id);
+            return Optional.of(payment);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

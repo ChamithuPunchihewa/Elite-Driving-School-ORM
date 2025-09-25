@@ -2,12 +2,14 @@ package lk.ijse.elite_driving_school_orm.dao.custom.impl;
 
 import lk.ijse.elite_driving_school_orm.config.FactoryConfiguration;
 import lk.ijse.elite_driving_school_orm.dao.custom.LessonDAO;
+import lk.ijse.elite_driving_school_orm.entity.Course;
 import lk.ijse.elite_driving_school_orm.entity.Instructor;
 import lk.ijse.elite_driving_school_orm.entity.Lesson;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LessonDAOImpl implements LessonDAO {
     @Override
@@ -70,5 +72,16 @@ public class LessonDAOImpl implements LessonDAO {
             session.close();
         }
 
+    }
+
+    @Override
+    public Optional<Lesson> getOne(int id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try{
+            Lesson lesson = session.get(Lesson.class, id);
+            return Optional.of(lesson);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

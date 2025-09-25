@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserDAOImpl implements UserDAO {
     @Override
@@ -59,5 +60,16 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getALL() {
         return List.of();
+    }
+
+    @Override
+    public Optional<User> getOne(int id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try{
+            User user = session.get(User.class, id);
+            return Optional.of(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

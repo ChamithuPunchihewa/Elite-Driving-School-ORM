@@ -2,11 +2,13 @@ package lk.ijse.elite_driving_school_orm.dao.custom.impl;
 
 import lk.ijse.elite_driving_school_orm.config.FactoryConfiguration;
 import lk.ijse.elite_driving_school_orm.dao.custom.StudentDAO;
+import lk.ijse.elite_driving_school_orm.entity.Course;
 import lk.ijse.elite_driving_school_orm.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class StudentDAOImpl implements StudentDAO {
@@ -70,6 +72,17 @@ public class StudentDAOImpl implements StudentDAO {
         throw e;
         } finally {
             session.close();
+        }
+    }
+
+    @Override
+    public Optional<Student> getOne(int id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try{
+            Student student = session.get(Student.class, id);
+            return Optional.of(student);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
