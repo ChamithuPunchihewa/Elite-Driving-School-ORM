@@ -1,4 +1,4 @@
-// StudentDTO.java
+// InstructorDTO.java
 package lk.ijse.elite_driving_school_orm.dto;
 
 import lombok.*;
@@ -9,14 +9,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentDTO {
-    private String studentId;
+public class InstructorDTO {
+    private String instructorId;
     private String firstName;
     private String lastName;
-    private String nic;
     private String email;
     private String phone;
-    private LocalDate dateOfBirth;
-    private LocalDate registrationDate;
-    private List<String> enrolledCourseIds;
+    private String nic;
+    private LocalDate joinedDate;
+    private List<String> assignedCourseIds;
 }
