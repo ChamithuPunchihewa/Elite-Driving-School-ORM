@@ -5,7 +5,7 @@ import lk.ijse.elite_driving_school_orm.dao.custom.impl.*;
 public class DAOFactory {
     private static DAOFactory daoFactory;
     private DAOFactory(){}
-     private static DAOFactory getInstance(){return daoFactory == null ? daoFactory = new DAOFactory() : daoFactory;}
+     public static DAOFactory getInstance(){return daoFactory == null ? daoFactory = new DAOFactory() : daoFactory;}
 
     public enum DAOTypes{
         COURSE,
