@@ -12,4 +12,5 @@ public interface InstructorBO extends SuperBO {
     boolean update(InstructorDTO instructorDTO);
     boolean delete(int id);
     List<InstructorDTO> getAll();
+    InstructorDTO getOne(int id);
 }

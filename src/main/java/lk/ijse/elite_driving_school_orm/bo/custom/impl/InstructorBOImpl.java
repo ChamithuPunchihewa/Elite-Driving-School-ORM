@@ -43,6 +43,11 @@ public class InstructorBOImpl implements InstructorBO {
         }
             }
 
+    @Override
+    public InstructorDTO getOne(int id) {
+        Instructor instructor = instructorDAO.getOne(id).get();
+        return new InstructorDTO(instructor.getInstructorId(), instructor.getName(), instructor.getEmail(), instructor.getPhone(),instructor.isAvailability());
+    }
 
 
 }

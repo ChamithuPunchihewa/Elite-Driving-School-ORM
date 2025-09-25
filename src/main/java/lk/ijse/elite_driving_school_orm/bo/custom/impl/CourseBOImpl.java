@@ -41,5 +41,11 @@ public class CourseBOImpl implements CourseBO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public CourseDTO getOne(int id) {
+        Course course = courseDAO.getOne(id).get();
+        return new CourseDTO(course.getCourseId(), course.getName(), course.getDuration(), course.getFee());
+    }
 }
 

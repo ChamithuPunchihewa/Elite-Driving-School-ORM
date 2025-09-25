@@ -1,6 +1,7 @@
 package lk.ijse.elite_driving_school_orm.bo.custom;
 
 
+import lk.ijse.elite_driving_school_orm.bo.SuperBO;
 import lk.ijse.elite_driving_school_orm.bo.custom.impl.*;
 
 public class BOFactory {
@@ -20,7 +21,7 @@ public class BOFactory {
         PAYMENT,
         USER
     }
-    public StudentBOImpl getBO(BOTypes boType) {
+    public SuperBO getBO(BOTypes boType) {
         switch(boType){
             case STUDENT:
                 return new StudentBOImpl();
